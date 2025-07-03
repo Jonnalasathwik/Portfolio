@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jonnala Sathwik | Portfolio</title>
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Font Awesome CDN for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Typed.js -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <!-- particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Vanta.js animated background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', Arial, sans-serif;
+      position: relative;
+      overflow-x: hidden;
+    }
+    #vanta-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      background: #101018;
+    }
+    .main-content {
+      position: relative;
+      z-index: 1;
+    }
+    .navbar {
+      background: rgba(34, 34, 50, 0.85);
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 16px rgba(100, 125, 238, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+    .navbar .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #fff;
+      text-shadow: 0 2px 8px #7f53ac44;
+    }
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .navbar a::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #fff;
+      transition: width 0.3s;
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+    }
+    .navbar a:hover::after {
+      width: 100%;
+      background: #fff;
+    }
+    .navbar a:hover {
+      color: #ffd86b;
+    }
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      padding: 5rem 2rem 3rem 2rem;
+      min-height: 80vh;
+      position: relative;
+    }
+    .hero-left {
+      max-width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .hero-left h1 {
+      font-size: 3.2rem;
+      margin: 0.5rem 0;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 2px 8px #7f53ac44;
+    }
+    .name-highlight {
+      color: #ffd86b;
+    }
+    .typed-effect {
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+    }
+    .hero-right img {
+      width: 270px;
+      height: 270px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 6px solid #ffd86b;
+      box-shadow: 0 8px 32px #7f53ac55;
+      background: #fff;
+    }
+    .btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #7f53ac 0%, #ffd86b 100%);
+      color: #232526;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      margin-top: 1.2rem;
+      margin-right: 0.7rem;
+      box-shadow: 0 2px 8px #7f53ac33;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      border: none;
+    }
+    .btn:hover {
+      background: linear-gradient(90deg, #ffd86b 0%, #7f53ac 100%);
+      color: #fff;
+      box-shadow: 0 4px 16px #ffd86b55;
+    }
+    .about-container, .education-grid, .about-container, .projects-grid, .certifications-grid {
+      display: flex;
+      gap: 2.5rem;
+      padding: 2.5rem 2rem;
+      background: rgba(255,255,255,0.10);
+      border-radius: 24px;
+      margin: 2.5rem auto;
+      max-width: 1100px;
+      box-shadow: 0 4px 32px #7f53ac22;
+      backdrop-filter: blur(6px);
+    }
+    .about-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .profile-pic {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center center;
+      border: 4px solid #ffd86b;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 2px 16px #ffd86b33;
+      background: #fff;
+      display: block;
+      aspect-ratio: 1 / 1;
+    }
+    .about-right {
+      flex: 2;
+      color: #fff;
+    }
+    .skill {
+      margin-bottom: 1.2rem;
+    }
+    .skill label {
+      display: block;
+      text-align: center;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+    .progress-bar {
+      width: 100%;
+      height: 18px;
+      background: #23232e;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 1px 4px #7f53ac22;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #ffd86b 0%, #7f53ac 100%);
+      transition: width 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+    .certifications-grid, .projects-grid, .education-grid {
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    .cert-card, .project-card, .edu-card {
+      background: rgba(255,255,255,0.18);
+      border-radius: 18px;
+      padding: 1.5rem;
+      flex: 1 1 260px;
+      box-shadow: 0 2px 12px #7f53ac22;
+      color: #232526;
+      backdrop-filter: blur(4px);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cert-card:hover, .project-card:hover, .edu-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 8px 32px #ffd86b44;
+    }
+    .project-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 0.7rem;
+      max-height: 140px;
+      object-fit: cover;
+    }
+    .contact-section {
+      background: rgba(255,255,255,0.10);
+      padding: 2.5rem 2rem 1.5rem 2rem;
+      border-radius: 24px;
+      margin: 2.5rem auto;
+      max-width: 900px;
+      box-shadow: 0 4px 32px #7f53ac22;
+      backdrop-filter: blur(6px);
+    }
+    .contact-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+    .contact-item {
+      flex: 1 1 220px;
+      min-height: 120px;
+      background: rgba(255,255,255,0.18);
+      border-radius: 14px;
+      padding: 2rem 1.2rem 2rem 1.2rem;
+      text-align: center;
+      color: #232526;
+      box-shadow: 0 2px 12px #ffd86b22;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      word-break: break-all;
+      overflow-wrap: anywhere;
+    }
+    .contact-item:hover {
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: 0 8px 32px #ffd86b44;
+    }
+    .contact-item p {
+      word-break: break-all;
+      overflow-wrap: anywhere;
+      margin: 0.5rem 0 0 0;
+      padding: 0 0.2rem;
+      text-align: center;
+    }
+    .footer-content {
+      text-align: center;
+      padding: 1.5rem 0 0.5rem 0;
+      color: #fff;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+    .footer-links a {
+      color: #ffd86b;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .footer-links a:hover {
+      text-decoration: underline;
+      color: #fff;
+    }
+    /* Decorative background shapes */
+    body::before, body::after {
+      content: '';
+      position: fixed;
+      z-index: 0;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.25;
+    }
+    body::before {
+      width: 400px;
+      height: 400px;
+      background: #ffd86b;
+      top: -120px;
+      left: -120px;
+    }
+    body::after {
+      width: 350px;
+      height: 350px;
+      background: #7f53ac;
+      bottom: -100px;
+      right: -100px;
+    }
+    @media (max-width: 900px) {
+      .about-container, .contact-box, .certifications-grid, .projects-grid, .education-grid {
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+      .hero {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 2rem;
+      }
+      .hero-left, .hero-right {
+        max-width: 100%;
+      }
+      .about-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .profile-pic {
+        width: 70vw;
+        max-width: 320px;
+        min-width: 160px;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+      }
+      .navbar {
+        flex-wrap: wrap;
+        padding: 1rem 1rem;
+      }
+      .menu-toggle {
+        display: block;
+        margin-left: auto;
+        z-index: 201;
+      }
+      .nav-links {
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 70vw;
+        max-width: 320px;
+        background: rgba(34, 34, 50, 0.98);
+        box-shadow: 4px 0 32px #7f53ac22;
+        border-radius: 0 18px 18px 0;
+        padding: 2.5rem 1.2rem 1.2rem 1.2rem;
+        z-index: 200;
+        transform: translateX(-100%);
+        transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.3s;
+        opacity: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        display: flex;
+      }
+      .nav-links.open {
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .nav-links li {
+        margin: 1.2rem 0;
+        text-align: left;
+      }
+      .nav-links a {
+        font-size: 1.3rem;
+        padding: 0.7rem 0;
+        display: block;
+      }
+    }
+    .projects-grid {
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    @media (max-width: 900px) {
+      .projects-grid {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: visible;
+        display: flex;
+        gap: 1.2rem;
+        margin: 1.2rem 0;
+        padding-bottom: 1rem;
+        scrollbar-color: #ffd86b #7f53ac22;
+        scrollbar-width: thin;
+      }
+      .project-card {
+        min-width: 280px;
+        max-width: 90vw;
+        flex: 0 0 auto;
+        overflow-y: auto;
+        max-height: 340px;
+      }
+      .projects-grid::-webkit-scrollbar {
+        height: 10px;
+      }
+      .projects-grid::-webkit-scrollbar-thumb {
+        background: #ffd86b;
+        border-radius: 6px;
+      }
+      .projects-grid::-webkit-scrollbar-track {
+        background: #7f53ac22;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Particles Background -->
+  <div id="particles-js"></div>
+  <div id="vanta-bg"></div>
+  <div class="main-content">
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">Jonnala Sathwik</div>
+    <div class="menu-toggle" id="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#home"><i class="fas fa-house"></i> Home</a></li>
+      <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+      <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
+      <li><a href="#skills"><i class="fas fa-code"></i> Skills</a></li>
+      <li><a href="#certifications"><i class="fas fa-certificate"></i> Certifications</a></li>
+      <li><a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a></li>
+      <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-left">
+      <h4>Hi, I'm</h4>
+      <h1><span class="name-highlight">Jonnala</span> <span class="name-highlight">Sathwik</span></h1>
+      <p><span id="typed-text" class="typed-effect"></span></p>
+      <p>Future Software Engineer</p>
+      <a href="#contact" class="btn">Contact Me</a>
+      <a href="https://github.com/Jonnalasathwik" class="btn" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://www.linkedin.com/in/sathwik-jonnala-298326282?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="btn" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://drive.google.com/file/d/1Gtql0a-DK4u1BM9s3n_juK5EYWSd41de/view?usp=drive_link" class="btn" target="_blank" rel="noopener"><i class="fas fa-file-download"></i> Download Resume</a>
+    </div>
+    <div class="hero-right">
+      <img src="C:\Users\jonna\OneDrive\Desktop\my-portfolio\images\me.jpg" alt="Jonnala Sathwik" />
+    </div>
+  </section>
+
+  <!-- Initialize Typed.js -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      new Typed('#typed-text', {
+        strings: [
+          'A passionate tech enthusiast',
+          'Machine Learning & Cybersecurity',
+          'Building intelligent systems',
+          'Always eager to learn, explore, and innovate.'
+        ],
+        typeSpeed: 55,
+        backSpeed: 35,
+        backDelay: 1500,
+        loop: true
+      });
+    });
+  </script>
+
+  <!-- Initialize Particles.js -->
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": { "enable": true, "value_area": 800 }
+        },
+        "color": { "value": "#00ffff" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5, "random": true },
+        "size": { "value": 3 },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#00ffff",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": { "enable": true, "speed": 2 }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": { "enable": true, "mode": "grab" }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="about-container">
+
+      <div class="about-left">
+        <img src="C:\Users\jonna\OneDrive\Desktop\my-portfolio\images\me.jpg" alt="Jonnala Sathwik" class="profile-pic" />
+        <h3>Languages</h3>
+        <p>Telugu, Hindi, English</p>
+        <h3>Other Skills</h3>
+        <p>MS Office, PowerPoint, VS Code</p>
+        <h3>Interests</h3>
+        <ul>
+          <li>Exploring Emerging Technologies (AI, ML, Cybersecurity)</li>
+          <li>Competitive Programming</li>
+          <li>Reading Tech Blogs & Research Papers</li>
+          <li>Building ML/DL Projects</li>
+        </ul>
+      </div>
+
+      <div class="about-right">
+        <h2>About Me</h2>
+        <p>Hi, I'm Sathwik Jonnala.<br>
+        A passionate tech enthusiast with a strong interest in emerging technologies, machine learning, and cybersecurity. I enjoy building intelligent systems that solve real-world problems and have hands-on experience in developing ML-based applications, secure systems, and data-driven solutions. Always eager to learn, explore, and innovate.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Resume Section -->
+  <section id="education">
+    <h2>Education</h2>
+    <div class="education-grid">
+      <div class="edu-card">
+        <h3>CMR Engineering College</h3>
+        <p><strong>Degree:</strong> B.Tech in CSE (AIML)</p>
+        <p><strong>Years:</strong> 2022 – 2026</p>
+        <p><strong>CGPA:</strong> 8.88 / 10</p>
+        <p><strong>Location:</strong> Kandlakoya, Hyderabad, Telangana, India</p>
+      </div>
+      <div class="edu-card">
+        <h3>Intermediate</h3>
+        <p><strong>Years:</strong> 2020 – 2022</p>
+        <p><strong>Marks:</strong> 924 / 1000</p>
+        <p><strong>Location:</strong> Jangaon, Telangana, India</p>
+      </div>
+      <div class="edu-card">
+        <h3>SSC – Ekashila High School</h3>
+        <p><strong>Year:</strong> 2020</p>
+        <p><strong>CGPA:</strong> 10 / 10</p>
+        <p><strong>Location:</strong> Jangaon, Telangana, India</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 style="text-align: center;">Skills</h2>
+    <div class="about-container">
+      <div class="about-left">
+        <div class="skill">
+          <label>C</label>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 90%;"></div>
+          </div>
+        </div>
+        
+        <div class="skill">
+          <label>C++</label>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 96%;"></div>
+          </div>
+        </div>
+        
+        <div class="skill">
+          <label>Java</label>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 90%;"></div>
+          </div>
+        </div>
+        
+        <div class="skill">
+          <label>Python</label>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 90%;"></div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="about-right">
+        <h3>Competitive Programming</h3>
+        <p>Active participant in coding contests and problem-solving platforms.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <h2>Certifications & Assessments</h2>
+    <div class="certifications-grid">
+      <div class="cert-card">
+        <h3>Data Structures in C /CPP(Smart Interviews)</h3>
+        <p>Secured Certificate for the completion of Data Structures in C/CPP.</p>
+      </div>
+      <div class="cert-card">
+        <h3>DSA (C & C++) - Udemy</h3>
+        <p>Achieved certificate for DSA (C & C++) from Udemy.</p>
+      </div>
+      <div class="cert-card">
+        <h3>Cambridge Interchange Level-3</h3>
+        <p>Secured a Certificate from Cambridge for participating in the Interchange Level-3 Course.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Malicious URL Detection Based on ML</h3>
+        <p>Developed a machine learning model to detect and classify URLs as malicious or safe. The project involved data preprocessing, feature extraction from URLs, and training classifiers such as Random Forest and Logistic Regression. The model was evaluated using accuracy metrics and a confusion matrix. A Streamlit interface was also built for real-time URL predictions.</p>
+        <a href="https://github.com/Jonnalasathwik/malicious-url-detection-based-on-machine-learning" target="_blank" style="display:inline-block;margin-top:0.7rem;color:#232526;font-weight:600;"><i class="fab fa-github"></i> View on GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>Automatic Plant Watering System</h3>
+        <p>Developed an Automatic Plant Watering System using a soil moisture sensor. The system detects soil moisture levels and activates a water pump when moisture drops below a set threshold. Designed for efficient plant care with minimal human intervention.</p>
+        <img src="images/PRO.jpg" alt="Automatic Plant Watering System" />
+      </div>
+      <div class="project-card">
+        <h3>ML-Based Classification and Prediction for DDoS Attacks</h3>
+        <p>Designed and implemented a machine learning system to detect and classify Distributed Denial of Service (DDoS) attacks in network traffic. The project involved preprocessing labeled network datasets, extracting relevant features, and applying classification algorithms such as Decision Tree, Random Forest, and SVM. Evaluated model performance using metrics like accuracy, precision, recall, and confusion matrix to ensure reliable detection of DDoS patterns in real-time traffic scenarios.</p>
+        <a href="https://github.com/Jonnalasathwik/ddos-attacks" target="_blank" style="display:inline-block;margin-top:0.7rem;color:#232526;font-weight:600;"><i class="fab fa-github"></i> View on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- contact section -->
+  
+  <section id="contact" class="contact-section">
+    <h2>Contact Me</h2>
+    <div class="contact-box">
+      <div class="contact-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <h3>ADDRESS</h3>
+        <p>Jangaon, Telangana, India</p>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-phone-alt"></i>
+        <h3>CONTACT NUMBER</h3>
+        <p>7659908802</p>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <h3>EMAIL ADDRESS</h3>
+        <p>jonnalasathwik2004@gmail.com</p>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-file-download"></i>
+        <h3>RESUME</h3>
+        <p><a href="https://drive.google.com/file/d/1Gtql0a-DK4u1BM9s3n_juK5EYWSd41de/view?usp=drive_link" target="_blank" rel="noopener" style="color:#232526;font-weight:600;">Download PDF</a></p>
+      </div>
+      <div class="contact-item">
+        <i class="fab fa-github"></i>
+        <h3>GITHUB</h3>
+        <p><a href="https://github.com/Jonnalasathwik" target="_blank">github.com/Jonnalasathwik</a></p>
+      </div>
+      <div class="contact-item">
+        <i class="fab fa-linkedin"></i>
+        <h3>LINKEDIN</h3>
+        <p><a href="https://www.linkedin.com/in/sathwik-jonnala-298326282?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">linkedin.com/in/sathwik-jonnala</a></p>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Jonnala Sathwik. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.getElementById('menu-toggle');
+      const navLinks = document.getElementById('nav-links');
+      menuToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('open');
+      });
+      // Optional: close menu on link click (for single-page UX)
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+        });
+      });
+      // Close nav on ESC key (only if open and on small screens)
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+          navLinks.classList.remove('open');
+        }
+      });
+      // Vanta.js animated background (dark, empty/space-like)
+      if (window.VANTA) {
+        VANTA.NET({
+          el: "#vanta-bg",
+          mouseControls: true,
+          touchControls: true,
+          minHeight: 200.00,
+          minWidth: 200.00,
+          scale: 1.0,
+          scaleMobile: 1.0,
+          color: 0x222233,
+          backgroundColor: 0x101018,
+          points: 8.0,
+          maxDistance: 18.0,
+          spacing: 18.0,
+          showDots: false,
+          showLines: true,
+          opacity: 0.18
+        });
+      }
+    });
+  </script>
+
+  <script src="js/script.js"></script>
+  </div>
+</body>
+</html>
